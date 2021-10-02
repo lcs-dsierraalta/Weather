@@ -25,7 +25,7 @@ while true {
     switch choice {
     case "1":
         
-        var prediction = viewModel.providePredictionFor()
+        let prediction = viewModel.providePredictionFor()
         
         // Show the prediction
         print("Current conditions are \(prediction.condition.description.lowercased()) with a temperature of \(String(format: "%.1f", arguments: [prediction.temperature])) °C.")
@@ -34,9 +34,9 @@ while true {
     case "2":
         for prediction in viewModel.predictions {
             
-            print(prediction.temperature)
+            print("\(String(format: "%.1f", arguments: [prediction.temperature])) °C")
             print(prediction.feel)
-            print(prediction.condition)
+            print(prediction.condition.description.lowercased())
             print("")
         }
     case "Q": exit(0)
