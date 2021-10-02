@@ -7,3 +7,16 @@
 
 import Foundation
 
+class PredictionViewModel {
+    var predictions: [Prediction] = []
+    
+    func providePredictionFor() -> Prediction {
+        
+        // Generate a weather prediction
+        let currentPrediction = WeatherPredictionGenerator.getPrediction()
+        
+        predictions.append(currentPrediction)
+     
+        return currentPrediction
+    }
+}

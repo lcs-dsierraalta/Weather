@@ -7,24 +7,43 @@
 
 import Foundation
 
+var viewModel = PredictionViewModel()
+
 
 while true {
-    // Generate a weather prediction
-    let prediction = WeatherPredictionGenerator.getPrediction()
     
-    // Show the prediction
-    print("Current conditions are \(prediction.condition.description.lowercased()) with a temperature of \(String(format: "%.1f", arguments: [prediction.temperature])) °C.")
+    print("Weather Prediction App")
+    print("======================")
+    print("1 - Get prediction")
+    print("2 - History")
+    print("Q - Quit")
+    print("")
+    print("Choose option (1/2/Q)")
     
-    print("That's \(prediction.feel.lowercased())!")
+    let choice = readLine()!
     
-    while true {
-        print("More predictions? (Y/N)")
-        let selection = readLine()!
-        if selection == "Y" {
-            break
-        } else if selection == "N" {
-            exit(0)
+    switch choice {
+    case "1":
+        
+        var prediction = viewModel.providePredictionFor()
+        
+        // Show the prediction
+        print("Current conditions are \(prediction.condition.description.lowercased()) with a temperature of \(String(format: "%.1f", arguments: [prediction.temperature])) °C.")
+        
+        print("That's \(prediction.feel.lowercased())!")
+    case "2":
+        for prediction in viewModel.predictions {
+            
+            print(prediction.temperature)
+            print(prediction.feel)
+            print(prediction.condition)
+            print("")
         }
+    case "Q": exit(0)
+        
+    default:
+        break
     }
+    
     
 }
