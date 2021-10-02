@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Connects main.swift to the viewModel
 var viewModel = PredictionViewModel()
 
 
@@ -25,6 +26,7 @@ while true {
     switch choice {
     case "1":
         
+        // Generates a new prediction
         let prediction = viewModel.providePredictionFor()
         
         // Show the prediction
